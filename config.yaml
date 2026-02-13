@@ -1,0 +1,140 @@
+# A股板块分析器配置
+
+# Tushare Token配置 (需要去 https://tushare.pro 注册获取)
+tushare:
+  token: "c2ac341127052af9d88d87377784243fe5e575e5980fe69473a21242"  # 填入你的Tushare Token
+
+# 板块分类配置 - 使用代表性股票代码
+sectors:
+  - name: "银行"
+    code: "601398"
+    index_name: "中证银行指数"
+    etf:
+      - code: "512800"
+        name: "华宝中证银行ETF"
+      - code: "512880"
+        name: "南方中证银行ETF"
+  - name: "证券"
+    code: "600030"
+    index_name: "中证证券公司指数"
+    etf:
+      - code: "512880"
+        name: "南方中证全指证券公司ETF"
+      - code: "159995"
+        name: "易方达中证证券公司ETF联接"
+  - name: "保险"
+    code: "601601"
+    index_name: "中证保险指数"
+    etf:
+      - code: "159903"
+        name: "方正富邦中证保险ETF"
+      - code: "601318"
+        name: "中国平安"
+  - name: "酿酒"
+    code: "600519"
+    index_name: "中证酒指数"
+    etf:
+      - code: "515170"
+        name: "鹏华中证酒ETF"
+      - code: "159843"
+        name: "鹏华中证酒ETF联接"
+  - name: "医药医疗"
+    code: "600276"
+    index_name: "中证医疗指数"
+    etf:
+      - code: "512010"
+        name: "华宝中证医疗ETF"
+      - code: "159995"
+        name: "易方达中证医疗ETF联接"
+  - name: "食品饮料"
+    code: "600887"
+    index_name: "中证食品饮料指数"
+    etf:
+      - code: "515170"
+        name: "鹏华中证酒ETF"
+      - code: "515790"
+        name: "华夏中证食品饮料ETF"
+  - name: "电子"
+    code: "000725"
+    index_name: "中证电子指数"
+    etf:
+      - code: "159997"
+        name: "华夏中证电子ETF"
+      - code: "159995"
+        name: "易方达中证电子ETF联接"
+  - name: "半导体"
+    code: "600183"
+    index_name: "中证半导体指数"
+    etf:
+      - code: "159995"
+        name: "华夏中证半导体ETF"
+      - code: "512480"
+        name: "华宝中证半导体ETF"
+  - name: "新能源"
+    code: "600438"
+    index_name: "新能源指数"
+    etf:
+      - code: "516160"
+        name: "易方达中证新能源ETF"
+      - code: "159851"
+        name: "华宝中证新能源ETF联接"
+  - name: "光伏"
+    code: "601012"
+    index_name: "中证光伏产业指数"
+    etf:
+      - code: "159863"
+        name: "华泰柏瑞中证光伏ETF"
+      - code: "516160"
+        name: "易方达中证新能源ETF"
+  - name: "军工"
+    code: "600893"
+    index_name: "中证军工指数"
+    etf:
+      - code: "512660"
+        name: "易方达中证军工ETF"
+      - code: "159995"
+        name: "鹏华中证国防ETF联接"
+  - name: "券商"
+    code: "600837"
+    index_name: "中证证券公司指数"
+    etf:
+      - code: "512000"
+        name: "南方中证全指证券公司ETF"
+      - code: "159995"
+        name: "易方达中证证券公司ETF联接"
+
+# 数据获取配置
+data:
+  history_years: 5
+  fetch_holdings: true
+  fetch_valuation: true
+
+# 输出配置
+output:
+  output_dir: "./output"
+  open_browser: true
+
+# 百分位阈值
+percentile:
+  low: 30
+  high: 70
+
+# 颜色配置
+colors:
+  low: "#4CAF50"
+  medium: "#FFC107"
+  high: "#F44336"
+  background: "#1e1e1e"
+  text: "#ffffff"
+
+database:
+  url: "sqlite:///./backend/data/summarize_etf.db"
+
+scheduler:
+  day_of_week: "sun"
+  hour: 18
+  minute: 0
+
+api:
+  host: "127.0.0.1"
+  port: 8000
